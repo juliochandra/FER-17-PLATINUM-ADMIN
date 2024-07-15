@@ -6,6 +6,7 @@ import store from "./services/redux/store.js";
 import ListRouter from "./routes/ListRouter.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "chart.js/auto";
 import "./assets/css/bootstrap.css";
 import "./assets/css/styles.css";
 

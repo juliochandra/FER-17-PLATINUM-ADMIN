@@ -8,9 +8,9 @@ const apiSlice = createApi({
     prepareHeaders: (headers) => {
       const userInfo = localStorage.getItem("userInfo");
       if (userInfo) {
-        const { token } = JSON.parse(userInfo);
-        if (token) {
-          headers.set("access_token", `${token}`);
+        const { access_token } = JSON.parse(userInfo);
+        if (access_token) {
+          headers.set("access_token", `${access_token}`);
         }
       }
       return headers;
