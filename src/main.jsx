@@ -6,7 +6,8 @@ import store from "./services/redux/store.js";
 import ListRouter from "./routes/ListRouter.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./assets/css/bootstrap.css";
+import "./assets/css/styles.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

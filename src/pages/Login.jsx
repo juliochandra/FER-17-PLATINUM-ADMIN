@@ -81,6 +81,7 @@ const Login = () => {
                     type="email"
                     placeholder="Enter email"
                     className="mb-3"
+                    value={"admin@bcr.io"}
                     {...register("email", { required: "Email is required" })}
                   />
                 </Form.Group>
@@ -91,6 +92,7 @@ const Login = () => {
                     type="password"
                     placeholder="Password"
                     className="mb-3"
+                    value={"123456"}
                     {...register("password", {
                       required: "Password is required",
                     })}
