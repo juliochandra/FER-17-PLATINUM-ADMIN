@@ -5,7 +5,7 @@ const DashboardNavigationContent = ({ handleSidebarToggle }) => {
   return (
     <Row
       id="navigationContent"
-      className="bg-white p-1 bottom-shadow align-items-center"
+      className="bg-white p-3 bottom-shadow align-items-center"
     >
       <Col xs="auto">
         <Button className="p-0" variant="link" onClick={handleSidebarToggle}>

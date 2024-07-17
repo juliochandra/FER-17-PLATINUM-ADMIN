@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import ChartPage from "../components/ChartReport";
 import DashboardNavigation from "../components/DashboardNavigation";
 import ListOrders from "../components/ListOrders";
@@ -13,7 +13,7 @@ const Dashboard = () => {
   };
 
   return (
-    <Container fluid style={{ backgroundColor: "#F4F5F7" }}>
+    <Container fluid>
       <Row>
         <DashboardNavigation isSidebarToggleVisible={isSidebarToggleVisible} />
 
@@ -22,20 +22,33 @@ const Dashboard = () => {
             handleSidebarToggle={handleSidebarToggle}
           />
 
-          <Row id="content">
+          <Row id="content" className="mt-4">
             <Col className="vh-100">
               <Row>
-                <Col>content</Col>
+                <Col>
+                  <Breadcrumb>
+                    <Breadcrumb.Item
+                      to="/dashboard"
+                      className="text-decoration-none text-black"
+                    >
+                      Dashboard
+                    </Breadcrumb.Item>
+                    <Breadcrumb.Item active>Dashboard</Breadcrumb.Item>
+                  </Breadcrumb>
+                </Col>
+              </Row>
+              <Row className="mt-4">
+                <Col>
+                  <h4>Rented Car Data Visualization</h4>
+                </Col>
               </Row>
               <Row>
                 <Col>
                   <ChartPage />
                 </Col>
               </Row>
-              <Row>
-                <Col className="d-flex">
-                  <ListOrders />
-                </Col>
+              <Row className="mt-6">
+                <ListOrders />
               </Row>
             </Col>
           </Row>

@@ -8,7 +8,13 @@ const reportApi = apiSlice.injectEndpoints({
       providesTags: ["Report"],
     }),
     getOrder: builder.query({
-      query: () => `/v2/order?sort=created_at%3Adesc&page=1&pageSize=10`,
+      query: (params) => ({
+        url: `/v2/order`,
+        method: "GET",
+        params: {
+          ...params,
+        },
+      }),
       providesTags: ["Order"],
     }),
   }),

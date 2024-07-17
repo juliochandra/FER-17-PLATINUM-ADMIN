@@ -58,8 +58,16 @@ const Cars = () => {
                 </Row>
                 <Row>
                   {carsData?.cars?.map((car) => (
-                    <Col md={3} className="mb-3" key={car.id}>
-                      <Card className="d-flex h-100">
+                    <Col
+                      xs={12}
+                      sm={12}
+                      md={6}
+                      lg={4}
+                      xl={3}
+                      key={car.id}
+                      className="p-2"
+                    >
+                      <Card className="h-100">
                         <Card.Img variant="top" src={car.image} />
                         <Card.Body>
                           <Card.Text>{car.name}</Card.Text>
@@ -67,9 +75,10 @@ const Cars = () => {
                             Rp {formatPrice(car.price)} / hari
                           </Card.Title>
                           <Card.Text>{car.category}</Card.Text>
-                          <Row className="justify-content-between">
+                        </Card.Body>
+                        <Card.Footer className="bg-white border-0">
+                          <Row className="justify-content-between align-items-end">
                             <Col>
-                              {/* Updated the onClick function to pass car.id */}
                               <Button
                                 variant="outline-danger"
                                 className="rounded-1"
@@ -81,14 +90,14 @@ const Cars = () => {
                             </Col>
                             <Col className="d-flex justify-content-end">
                               <Link
-                                className="rounded-1 btn btn-success"
+                                className="rounded-1 btn btn-success text-white"
                                 to={`/cars/edit/${car.id}`}
                               >
                                 Edit
                               </Link>
                             </Col>
                           </Row>
-                        </Card.Body>
+                        </Card.Footer>
                       </Card>
                     </Col>
                   ))}
