@@ -7,6 +7,7 @@ import {
   Row,
   Modal,
   Image,
+  Form,
 } from "react-bootstrap";
 import DashboardNavigation from "../components/DashboardNavigation";
 import { useState, useEffect } from "react";
@@ -111,6 +112,15 @@ const Cars = () => {
     setCarsParams((prevParams) => ({
       ...prevParams,
       category: "large",
+    }));
+  };
+
+  const handleLimitChange = (e) => {
+    const pageSize = parseInt(e.target.value);
+    setCarsParams((prevParams) => ({
+      ...prevParams,
+      pageSize,
+      page: 1,
     }));
   };
 
@@ -237,12 +247,26 @@ const Cars = () => {
                   ))}
                 </Row>
                 <Row>
-                  <Col className="d-flex justify-content-end my-3">
-                    <CarsPagination
-                      carsParams={carsParams}
-                      setCarsParams={setCarsParams}
-                      carsData={carsData}
-                    />
+                  <Col className="d-flex justify-content-end gap-2">
+                    <Col xs={"auto"} className="my-3">
+                      <Form.Select
+                        aria-label="Default select example"
+                        onChange={handleLimitChange}
+                        value={carsParams.pageSize}
+                      >
+                        <option value={8}>8</option>
+                        <option value={16}>16</option>
+                        <option value={20}>20</option>
+                        <option value={24}>24</option>
+                      </Form.Select>
+                    </Col>
+                    <Col xs={"auto"} className="my-3">
+                      <CarsPagination
+                        carsParams={carsParams}
+                        setCarsParams={setCarsParams}
+                        carsData={carsData}
+                      />
+                    </Col>
                   </Col>
                 </Row>
               </Col>
@@ -270,12 +294,14 @@ const Cars = () => {
               variant="primary"
               onClick={handleConfirmDelete}
               disabled={isLoading}
+              className="rounded-1 w-25"
             >
               Ya
             </Button>
             <Button
               variant="outline-primary"
               onClick={() => setModalShow(false)}
+              className="rounded-1 w-25"
             >
               Tidak
             </Button>
