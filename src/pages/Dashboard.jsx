@@ -48,6 +48,12 @@ const Dashboard = () => {
                 </Col>
               </Row>
               <Row className="mt-6">
+                <Col>
+                  <h3>Dashborad</h3>
+                  <h4>List Orders</h4>
+                </Col>
+              </Row>
+              <Row>
                 <ListOrders />
               </Row>
             </Col>

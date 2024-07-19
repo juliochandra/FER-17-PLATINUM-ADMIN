@@ -2,7 +2,7 @@ import { Col, Image, Row } from "react-bootstrap";
 import retangle63 from "../assets/images/Rectangle 63.png";
 import retangle62 from "../assets/images/Rectangle 62.png";
 import { BsHouseDoor, BsCarFront } from "react-icons/bs";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const DashboardNavigation = ({ isSidebarToggleVisible }) => {
   const location = useLocation();
@@ -22,16 +22,20 @@ const DashboardNavigation = ({ isSidebarToggleVisible }) => {
             <Image src={retangle63} alt="" />
           </Col>
           <Col>
-            <Row>
-              <BsHouseDoor className="fs-2" />
-            </Row>
-            <h6 className="text-white">Dashboard</h6>
+            <Link to="/dashboard">
+              <Row>
+                <BsHouseDoor className="fs-2 text-white" />
+              </Row>
+              <h6 className="text-white text-center">Dashboard</h6>
+            </Link>
           </Col>
           <Col>
-            <Row>
-              <BsCarFront className="fs-2" />
-            </Row>
-            <h6 className="text-white text-center">Cars</h6>
+            <Link to="/cars">
+              <Row>
+                <BsCarFront className="fs-2 text-white" />
+              </Row>
+              <h6 className="text-white text-center">Cars</h6>
+            </Link>
           </Col>
         </Row>
       </Col>

@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { Col, Container, Form, Row } from "react-bootstrap";
+import { Breadcrumb, Col, Container, Form, Row } from "react-bootstrap";
 import DashboardNavigation from "../components/DashboardNavigation";
 import DashboardNavigationContent from "../components/DashboardNavigationContent";
 import { useForm } from "react-hook-form";
 
 import { useAddCarMutation } from "../services/redux/apis/carApi";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useNotification } from "../contexs/NotificationContext";
 
 const AddCar = () => {
   const navigate = useNavigate();
+  const { addNotification } = useNotification();
+
   const {
     register,
     handleSubmit,
@@ -27,17 +29,21 @@ const AddCar = () => {
         formData.append("image", data.image[0]);
       }
       await addCar(formData).unwrap();
-      toast.success("Add Car Success");
+      addNotification("Data Berhasil Disimpan", "success");
       navigate("/cars");
     } catch (error) {
       //   console.log(error);
-      toast.error("Add Car Failed");
+      addNotification("Data Gagal Disimpan", "danger");
     }
   };
 
   const [isSidebarToggleVisible, setIsSidebarToggleVisible] = useState(true);
   const handleSidebarToggle = () => {
     setIsSidebarToggleVisible(!isSidebarToggleVisible);
+  };
+
+  const handleCancel = () => {
+    navigate("/cars");
   };
 
   return (
@@ -55,16 +61,31 @@ const AddCar = () => {
             <Row id="content">
               <Col className="vh-100">
                 <Row>
-                  <Col>content</Col>
+                  <Col>
+                    <Breadcrumb>
+                      <Breadcrumb.Item
+                        to="/dashboard"
+                        className="text-decoration-none text-black"
+                      >
+                        Cars
+                      </Breadcrumb.Item>
+                      <Breadcrumb.Item active>Add</Breadcrumb.Item>
+                    </Breadcrumb>
+                  </Col>
                 </Row>
                 <Row>
                   <Col>
-                    <Form onSubmit={handleSubmit(addCarSubmit)}>
+                    <h3>Add New Car</h3>
+                  </Col>
+                </Row>
+                <Row className="mt-3">
+                  <Form onSubmit={handleSubmit(addCarSubmit)}>
+                    <Col className="vh-100">
                       <Form.Group as={Row} controlId="name">
                         <Form.Label column sm={2}>
-                          Name
+                          Name/Tipe Mobil
                         </Form.Label>
-                        <Col sm={10}>
+                        <Col sm={5}>
                           <Form.Control
                             type="text"
                             placeholder="Name"
@@ -73,29 +94,31 @@ const AddCar = () => {
                         </Col>
                       </Form.Group>
 
-                      <Form.Group as={Row} controlId="category">
+                      <Form.Group as={Row} controlId="price">
                         <Form.Label column sm={2}>
-                          Category
+                          Harga
                         </Form.Label>
-                        <Col sm={10}>
+                        <Col sm={5}>
                           <Form.Control
-                            type="text"
-                            placeholder="Category"
-                            {...register("category", { required: true })}
+                            type="number"
+                            placeholder="Harga"
+                            {...register("price", { required: true })}
                           />
                         </Col>
                       </Form.Group>
 
-                      <Form.Group as={Row} controlId="price">
+                      <Form.Group as={Row} controlId="category">
                         <Form.Label column sm={2}>
-                          Price
+                          Category
                         </Form.Label>
-                        <Col sm={10}>
-                          <Form.Control
-                            type="number"
-                            placeholder="Price"
-                            {...register("price", { required: true })}
-                          />
+                        <Col sm={5}>
+                          <Form.Select
+                            {...register("category", { required: true })}
+                          >
+                            <option value={"small"}>Small</option>
+                            <option value={"medium"}>Medium</option>
+                            <option value={"large"}>Large</option>
+                          </Form.Select>
                         </Col>
                       </Form.Group>
 
@@ -103,24 +126,35 @@ const AddCar = () => {
                         <Form.Label column sm={2}>
                           Image
                         </Form.Label>
-                        <Col sm={10}>
-                          <Form.Control type="file" {...register("image")} />
+                        <Col sm={5}>
+                          <Form.Control
+                            type="file"
+                            {...register("image", { required: true })}
+                          />
                         </Col>
                       </Form.Group>
 
-                      <Row className="mt-3">
-                        <Col sm={{ span: 10, offset: 2 }}>
+                      <Row className="mt-auto align-items-end">
+                        <Col xs={"auto"}>
+                          <button
+                            className="btn btn-outline-primary"
+                            onClick={handleCancel}
+                          >
+                            Cancel
+                          </button>
+                        </Col>
+                        <Col>
                           <button
                             type="submit"
                             disabled={!isValid}
                             className="btn btn-primary"
                           >
-                            Submit
+                            Save
                           </button>
                         </Col>
                       </Row>
-                    </Form>
-                  </Col>
+                    </Col>
+                  </Form>
                 </Row>
               </Col>
             </Row>

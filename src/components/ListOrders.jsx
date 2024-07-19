@@ -5,8 +5,11 @@ import { useState } from "react";
 import OrderPagination from "./OrderPagination";
 import { useForm } from "react-hook-form";
 
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+
 const ListOrders = () => {
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit } = useForm();
   const [orderParams, setOrderParams] = useState({
     sort: "created_at:desc",
     page: 1,
@@ -34,32 +37,63 @@ const ListOrders = () => {
   return (
     <Col>
       <Row>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>User Email</th>
-              <th>Car</th>
-              <th>Start Rent</th>
-              <th>Finish Rent</th>
-              <th>Price</th>
-              <th>Category</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orderData?.orders?.map((item, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{item?.User?.email}</td>
-                <td>{item?.Car?.name}</td>
-                <td>{format(new Date(item.start_rent_at), "yyyy-MM-dd")}</td>
-                <td>{format(new Date(item.finish_rent_at), "yyyy-MM-dd")}</td>
-                <td>{item?.total_price}</td>
-                <td>{item?.Car?.category}</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+        <Col className="p-0 mb-3">
+          <DataTable
+            value={orderData?.orders}
+            tableStyle={{ minWidth: "50rem" }}
+          >
+            <Column
+              header="No"
+              body={(rowData, { rowIndex }) => rowIndex + 1}
+              style={{ width: "5%" }}
+            ></Column>
+            <Column
+              field="User.email"
+              body={(rowData) => rowData.User?.email || "-"}
+              header="User Email"
+              sortable
+              style={{ width: "20%" }}
+            ></Column>
+            <Column
+              field="Car.name"
+              body={(rowData) => rowData.Car?.name || "-"}
+              header="Car"
+              sortable
+              style={{ width: "20%" }}
+            ></Column>
+            <Column
+              field="start_rent_at"
+              header="Start Rent"
+              body={(rowData) =>
+                format(new Date(rowData.start_rent_at), "yyyy-MM-dd")
+              }
+              sortable
+              style={{ width: "15%" }}
+            ></Column>
+            <Column
+              field="finish_rent_at"
+              header="Finish Rent"
+              body={(rowData) =>
+                format(new Date(rowData.finish_rent_at), "yyyy-MM-dd")
+              }
+              sortable
+              style={{ width: "15%" }}
+            ></Column>
+            <Column
+              field="total_price"
+              header="Price"
+              sortable
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="Car.category"
+              body={(rowData) => rowData.Car?.category || "-"}
+              header="Category"
+              sortable
+              style={{ width: "20%" }}
+            ></Column>
+          </DataTable>
+        </Col>
       </Row>
       <Row className="justify-content-between mb-5 ">
         <Col>
@@ -102,7 +136,7 @@ const ListOrders = () => {
             </Col>
           </Row>
         </Col>
-        <Col className="p-0 d-flex justify-content-end align-self-end">
+        <Col className="p-0 mt-4 d-flex justify-content-end align-self-end">
           <OrderPagination
             orderParams={orderParams}
             orderData={orderData}
