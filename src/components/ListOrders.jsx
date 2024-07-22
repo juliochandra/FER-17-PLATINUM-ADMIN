@@ -1,5 +1,8 @@
 import { Button, Col, Form, InputGroup, Row, Table } from "react-bootstrap";
-import { useGetOrderQuery } from "../services/redux/apis/reportApi";
+import {
+  useGetOrderQuery,
+  usePatchOrderbyIdMutation,
+} from "../services/redux/apis/reportApi";
 import { format } from "date-fns";
 import { useState } from "react";
 import OrderPagination from "./OrderPagination";
@@ -7,6 +10,7 @@ import { useForm } from "react-hook-form";
 
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import { InputSwitch } from "primereact/inputswitch";
 
 const ListOrders = () => {
   const { register, handleSubmit } = useForm();
@@ -16,6 +20,8 @@ const ListOrders = () => {
     pageSize: 10,
   });
   const { data: orderData } = useGetOrderQuery(orderParams);
+
+  const [patchOrderbyId] = usePatchOrderbyIdMutation();
 
   const handleLimitChange = (e) => {
     const pageSize = parseInt(e.target.value);
@@ -30,8 +36,29 @@ const ListOrders = () => {
     const selectedPage = parseInt(formData.page);
     setOrderParams((prevParams) => ({
       ...prevParams,
-      page: selectedPage, // Reset page to 1 when changing pageSize
+      page: selectedPage,
     }));
+  };
+
+  const handleStatusToggle = async (orderId, currentStatus) => {
+    try {
+      const updatedStatus = !currentStatus;
+      await patchOrderbyId({
+        id: orderId,
+        data: { status: updatedStatus },
+      }).unwrap();
+    } catch (error) {
+      console.error("Failed to update status:", error);
+    }
+  };
+
+  const statusBodyTemplate = (rowData) => {
+    return (
+      <InputSwitch
+        checked={rowData.status}
+        onChange={() => handleStatusToggle(rowData.id, rowData.status)}
+      />
+    );
   };
 
   return (
@@ -68,7 +95,7 @@ const ListOrders = () => {
                 format(new Date(rowData.start_rent_at), "yyyy-MM-dd")
               }
               sortable
-              style={{ width: "15%" }}
+              style={{ width: "10%" }}
             ></Column>
             <Column
               field="finish_rent_at"
@@ -77,7 +104,7 @@ const ListOrders = () => {
                 format(new Date(rowData.finish_rent_at), "yyyy-MM-dd")
               }
               sortable
-              style={{ width: "15%" }}
+              style={{ width: "10%" }}
             ></Column>
             <Column
               field="total_price"
@@ -90,7 +117,14 @@ const ListOrders = () => {
               body={(rowData) => rowData.Car?.category || "-"}
               header="Category"
               sortable
-              style={{ width: "20%" }}
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="status"
+              body={statusBodyTemplate}
+              header="Status"
+              sortable
+              style={{ width: "5%" }}
             ></Column>
           </DataTable>
         </Col>

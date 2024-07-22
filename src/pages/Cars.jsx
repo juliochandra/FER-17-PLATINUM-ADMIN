@@ -22,6 +22,8 @@ import imgBeepBeep from "../assets/images/img-BeepBeep.png";
 import { useNotification } from "../contexs/NotificationContext";
 import Message from "../components/Message";
 import CarsPagination from "../components/CarsPagination";
+import { BsTrash } from "react-icons/bs";
+import { FiEdit } from "react-icons/fi";
 
 const Cars = () => {
   const [carsParams, setCarsParams] = useState({
@@ -221,23 +223,29 @@ const Cars = () => {
                           <Card.Text>{car.category}</Card.Text>
                         </Card.Body>
                         <Card.Footer className="bg-white border-0">
-                          <Row className="justify-content-between align-items-end">
+                          <Row className="justify-content-between align-items-end mb-3">
                             <Col>
                               <Button
                                 variant="outline-danger"
-                                className="rounded-1"
+                                className="rounded-1 w-100"
                                 onClick={() => handleDeleteButtonClick(car.id)}
                                 disabled={isLoading}
                               >
-                                Delete
+                                <i>
+                                  <BsTrash />
+                                </i>
+                                <span className="ms-1 fs-6">Delete</span>
                               </Button>
                             </Col>
                             <Col className="d-flex justify-content-end">
                               <Link
-                                className="rounded-1 btn btn-success text-white"
+                                className="rounded-1 btn btn-success text-white w-100"
                                 to={`/cars/edit/${car.id}`}
                               >
-                                Edit
+                                <i>
+                                  <FiEdit />
+                                </i>
+                                <span className="ms-1 fs-6">Edit</span>
                               </Link>
                             </Col>
                           </Row>

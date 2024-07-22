@@ -17,7 +17,19 @@ const reportApi = apiSlice.injectEndpoints({
       }),
       providesTags: ["Order"],
     }),
+    patchOrderbyId: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/order/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+      invalidatesTags: ["Order"],
+    }),
   }),
 });
 
-export const { useGetReportQuery, useGetOrderQuery } = reportApi;
+export const {
+  useGetReportQuery,
+  useGetOrderQuery,
+  usePatchOrderbyIdMutation,
+} = reportApi;

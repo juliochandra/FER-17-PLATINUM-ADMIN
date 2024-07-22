@@ -81,63 +81,67 @@ const AddCar = () => {
                 <Row className="mt-3">
                   <Form onSubmit={handleSubmit(addCarSubmit)}>
                     <Col className="vh-100">
-                      <Form.Group as={Row} controlId="name">
-                        <Form.Label column sm={2}>
-                          Name/Tipe Mobil
-                        </Form.Label>
-                        <Col sm={5}>
-                          <Form.Control
-                            type="text"
-                            placeholder="Name"
-                            {...register("name", { required: true })}
-                          />
-                        </Col>
-                      </Form.Group>
+                      <div className="bg-white p-3">
+                        <Form.Group as={Row} controlId="name">
+                          <Form.Label column sm={2}>
+                            Name/Tipe Mobil
+                          </Form.Label>
+                          <Col sm={5}>
+                            <Form.Control
+                              type="text"
+                              placeholder="Name"
+                              {...register("name", { required: true })}
+                            />
+                          </Col>
+                        </Form.Group>
 
-                      <Form.Group as={Row} controlId="price">
-                        <Form.Label column sm={2}>
-                          Harga
-                        </Form.Label>
-                        <Col sm={5}>
-                          <Form.Control
-                            type="number"
-                            placeholder="Harga"
-                            {...register("price", { required: true })}
-                          />
-                        </Col>
-                      </Form.Group>
+                        <Form.Group as={Row} controlId="price">
+                          <Form.Label column sm={2}>
+                            Harga
+                          </Form.Label>
+                          <Col sm={5}>
+                            <Form.Control
+                              type="number"
+                              placeholder="Harga"
+                              {...register("price", { required: true })}
+                            />
+                          </Col>
+                        </Form.Group>
 
-                      <Form.Group as={Row} controlId="category">
-                        <Form.Label column sm={2}>
-                          Category
-                        </Form.Label>
-                        <Col sm={5}>
-                          <Form.Select
-                            {...register("category", { required: true })}
-                          >
-                            <option value={"small"}>Small</option>
-                            <option value={"medium"}>Medium</option>
-                            <option value={"large"}>Large</option>
-                          </Form.Select>
-                        </Col>
-                      </Form.Group>
+                        <Form.Group as={Row} controlId="category">
+                          <Form.Label column sm={2}>
+                            Category
+                          </Form.Label>
+                          <Col sm={5}>
+                            <Form.Select
+                              {...register("category", { required: true })}
+                            >
+                              <option value={"small"}>Small</option>
+                              <option value={"medium"}>Medium</option>
+                              <option value={"large"}>Large</option>
+                            </Form.Select>
+                          </Col>
+                        </Form.Group>
 
-                      <Form.Group as={Row} controlId="image">
-                        <Form.Label column sm={2}>
-                          Image
-                        </Form.Label>
-                        <Col sm={5}>
-                          <Form.Control
-                            type="file"
-                            {...register("image", { required: true })}
-                          />
-                        </Col>
-                      </Form.Group>
-
-                      <Row className="mt-auto align-items-end">
+                        <Form.Group as={Row} controlId="image">
+                          <Form.Label column sm={2}>
+                            Image
+                          </Form.Label>
+                          <Col sm={5}>
+                            <Form.Control
+                              type="file"
+                              {...register("image", { required: true })}
+                            />
+                          </Col>
+                        </Form.Group>
+                      </div>
+                      <Row className="mt-8 mb-8">
+                        <Col className="mt-4"></Col>
+                      </Row>
+                      <Row className="align-items-end">
                         <Col xs={"auto"}>
                           <button
-                            className="btn btn-outline-primary"
+                            className="btn btn-outline-primary rounded-1"
                             onClick={handleCancel}
                           >
                             Cancel
@@ -147,7 +151,7 @@ const AddCar = () => {
                           <button
                             type="submit"
                             disabled={!isValid}
-                            className="btn btn-primary"
+                            className="btn btn-primary rounded-1"
                           >
                             Save
                           </button>
