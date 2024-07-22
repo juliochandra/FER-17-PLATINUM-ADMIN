@@ -6,7 +6,9 @@ import { Link, useLocation } from "react-router-dom";
 
 const DashboardNavigation = ({ isSidebarToggleVisible }) => {
   const location = useLocation();
-  let currentPath = location.pathname;
+  const path = location.pathname;
+  let currentPath = path.split("/")[1];
+
   if (currentPath.startsWith("/")) {
     currentPath = currentPath.substring(1);
   }

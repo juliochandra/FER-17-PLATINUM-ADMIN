@@ -103,68 +103,73 @@ const EditCar = () => {
                     <div>Error fetching car data</div>
                   ) : (
                     <Form onSubmit={handleSubmit(editCarSubmit)}>
-                      <Form.Group as={Row} controlId="name">
-                        <Form.Label column sm={2}>
-                          Name
-                        </Form.Label>
-                        <Col sm={5}>
-                          <Form.Control
-                            type="text"
-                            placeholder="Name"
-                            {...register("name", { required: true })}
-                          />
-                          {errors.name && (
-                            <span className="text-danger">
-                              This field is required
-                            </span>
-                          )}
-                        </Col>
-                      </Form.Group>
+                      <div className="bg-white p-3">
+                        <Form.Group as={Row} controlId="name">
+                          <Form.Label column sm={2}>
+                            Name
+                          </Form.Label>
+                          <Col sm={5}>
+                            <Form.Control
+                              type="text"
+                              placeholder="Name"
+                              {...register("name", { required: true })}
+                            />
+                            {errors.name && (
+                              <span className="text-danger">
+                                This field is required
+                              </span>
+                            )}
+                          </Col>
+                        </Form.Group>
 
-                      <Form.Group as={Row} controlId="price">
-                        <Form.Label column sm={2}>
-                          Harga
-                        </Form.Label>
-                        <Col sm={5}>
-                          <Form.Control
-                            type="number"
-                            placeholder="Harga"
-                            {...register("price", { required: true })}
-                          />
-                          {errors.price && (
-                            <span className="text-danger">
-                              This field is required
-                            </span>
-                          )}
-                        </Col>
-                      </Form.Group>
+                        <Form.Group as={Row} controlId="price">
+                          <Form.Label column sm={2}>
+                            Harga
+                          </Form.Label>
+                          <Col sm={5}>
+                            <Form.Control
+                              type="number"
+                              placeholder="Harga"
+                              {...register("price", { required: true })}
+                            />
+                            {errors.price && (
+                              <span className="text-danger">
+                                This field is required
+                              </span>
+                            )}
+                          </Col>
+                        </Form.Group>
 
-                      <Form.Group as={Row} controlId="category">
-                        <Form.Label column sm={2}>
-                          Category
-                        </Form.Label>
-                        <Col sm={5}>
-                          <Form.Select
-                            {...register("category", { required: true })}
-                          >
-                            <option value={"small"}>Small</option>
-                            <option value={"medium"}>Medium</option>
-                            <option value={"large"}>Large</option>
-                          </Form.Select>
-                        </Col>
-                      </Form.Group>
+                        <Form.Group as={Row} controlId="category">
+                          <Form.Label column sm={2}>
+                            Category
+                          </Form.Label>
+                          <Col sm={5}>
+                            <Form.Select
+                              {...register("category", { required: true })}
+                            >
+                              <option value={"small"}>Small</option>
+                              <option value={"medium"}>Medium</option>
+                              <option value={"large"}>Large</option>
+                            </Form.Select>
+                          </Col>
+                        </Form.Group>
 
-                      <Form.Group as={Row} controlId="image">
-                        <Form.Label column sm={2}>
-                          Image
-                        </Form.Label>
-                        <Col sm={5}>
-                          <Form.Control
-                            type="file"
-                            {...register("image", { required: true })}
-                          />
-                        </Col>
-                      </Form.Group>
+                        <Form.Group as={Row} controlId="image">
+                          <Form.Label column sm={2}>
+                            Image
+                          </Form.Label>
+                          <Col sm={5}>
+                            <Form.Control
+                              type="file"
+                              {...register("image", { required: true })}
+                            />
+                          </Col>
+                        </Form.Group>
+                      </div>
+                      <Row className="mt-8 mb-8">
+                        <Col className="mt-4"></Col>
+                      </Row>
 
                       <Row className="mt-3">
                         <Col xs={"auto"}>
