@@ -1,4 +1,5 @@
 name: Deploy
+
 on:
   push:
     branches:
@@ -20,7 +21,7 @@ jobs:
         username: root
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          # Update PATH
+          # Update PATH to include NVM binaries
           export PATH=$PATH:/root/.nvm/v20.5.1/bin
 
           # Debugging information
