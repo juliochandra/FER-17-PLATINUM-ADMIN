@@ -24,9 +24,9 @@ jobs:
         username: root
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd /root/rental-car/FER-17-PLATINUM-ADMIN
-          git pull origin main
-          npm install
-          npm run build
-          pm2 reload ecosystem.config.js --only FER-17-PLATINUM-ADMIN
+         cd /root/rental-car/FER-17-PLATINUM-ADMIN
+         git pull origin main
+         npm install >> install.log 2>&1  # Capture npm install output
+         npm run build >> build.log 2>&1  # Capture npm run build output
+         pm2 reload ecosystem.config.js --only FER-17-PLATINUM-ADMIN
         debug: true
