@@ -18,13 +18,12 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.VPS_HOST }}
-        username: root # Replace with your VPS username
-        key: ${{ secrets.SSH_PRIVATE_KEY_SECRET_NAME }}  # Reference secret name
+        username: root
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd /home/<your_deployment_user>/rental-car/FER-17-PLATINUM-ADMIN
+          cd /root/rental-car/FER-17-PLATINUM-ADMIN
           git pull origin main
-          npm install >> install.log 2>&1
-          npm run build >> build.log 2>&1
-          # Adjust the following command if pm2 is not available/desired
-          sudo pm2 reload ecosystem.config.js --only FER-17-PLATINUM-ADMIN
+          npm install
+          npm run build
+          pm2 reload ecosystem.config.js --only FER-17-PLATINUM-ADMIN
         debug: true
