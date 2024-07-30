@@ -29,4 +29,4 @@ jobs:
           npm install
           npm run build
           pm2 reload ecosystem.config.js --only FER-17-PLATINUM-ADMIN
-
+        debug: true
