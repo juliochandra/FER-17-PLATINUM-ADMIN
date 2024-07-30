@@ -21,6 +21,15 @@ jobs:
         username: root
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
+          # Update PATH
+          export PATH=$PATH:/root/.nvm/v20.5.1/bin
+
+          # Debugging information
+          echo $PATH
+          which npm
+          which pm2
+
+          # Commands
           cd /root/rental-car/FER-17-PLATINUM-ADMIN
           git pull origin main
           npm install
