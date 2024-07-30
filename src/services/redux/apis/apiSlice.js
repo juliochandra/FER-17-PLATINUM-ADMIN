@@ -3,6 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 //  'https://api-car-rental.binaracademy.org/admin'
 
 const apiSlice = createApi({
+  reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://api-car-rental.binaracademy.org/admin",
     prepareHeaders: (headers) => {

@@ -12,6 +12,7 @@ const carApi = apiSlice.injectEndpoints({
       }),
 
       providesTags: ["Car"],
+      keepUnusedDataFor: 5,
     }),
     getCarById: builder.query({
       query: (id) => `/car/${id}`,
