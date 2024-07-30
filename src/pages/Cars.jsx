@@ -17,7 +17,6 @@ import {
   useDeleteCarMutation,
 } from "../services/redux/apis/carApi";
 import { Link, useLocation } from "react-router-dom";
-import { toast } from "react-toastify";
 import imgBeepBeep from "../assets/images/img-BeepBeep.png";
 import { useNotification } from "../contexs/NotificationContext";
 import Message from "../components/Message";

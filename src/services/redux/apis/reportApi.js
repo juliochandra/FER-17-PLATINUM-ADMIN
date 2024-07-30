@@ -6,6 +6,7 @@ const reportApi = apiSlice.injectEndpoints({
       query: ({ startDate, endDate }) =>
         `/order/reports?from=${startDate}&until=${endDate}`,
       providesTags: ["Report"],
+      keepUnusedDataFor: 5,
     }),
     getOrder: builder.query({
       query: (params) => ({
@@ -16,6 +17,7 @@ const reportApi = apiSlice.injectEndpoints({
         },
       }),
       providesTags: ["Order"],
+      keepUnusedDataFor: 5,
     }),
     patchOrderbyId: builder.mutation({
       query: ({ id, data }) => ({
