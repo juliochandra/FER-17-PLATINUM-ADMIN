@@ -35,5 +35,4 @@ jobs:
           npm install
           npm run build
           pm2 reload /root/rental-car/ecosystem.config.js --only FER-17-PLATINUM-ADMIN
-          pm2 status
         debug: true
