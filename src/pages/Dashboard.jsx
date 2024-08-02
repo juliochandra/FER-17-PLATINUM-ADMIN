@@ -22,7 +22,7 @@ const Dashboard = () => {
             handleSidebarToggle={handleSidebarToggle}
           />
 
-          <Row id="content" className="mt-4">
+          <Row id="content" className="mt-4 p-5">
             <Col className="vh-100">
               <Row>
                 <Col>

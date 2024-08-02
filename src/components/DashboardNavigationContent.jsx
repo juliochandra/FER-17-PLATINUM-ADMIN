@@ -28,6 +28,7 @@ const DashboardNavigationContent = ({ handleSidebarToggle, setCarsParams }) => {
     <Row
       id="navigationContent"
       className="bg-white p-3 bottom-shadow align-items-center"
+      style={{ height: "82px" }}
     >
       <Col xs="auto">
         <Button className="p-2" variant="link" onClick={handleSidebarToggle}>

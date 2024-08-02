@@ -20,6 +20,7 @@ const ListOrders = () => {
     pageSize: 10,
   });
   const { data: orderData } = useGetOrderQuery(orderParams);
+  // console.log(orderData);
 
   const [patchOrderbyId] = usePatchOrderbyIdMutation();
 
@@ -43,12 +44,14 @@ const ListOrders = () => {
   const handleStatusToggle = async (orderId, currentStatus) => {
     try {
       const updatedStatus = !currentStatus;
+      // console.log(updatedStatus);
+
       await patchOrderbyId({
         id: orderId,
         data: { status: updatedStatus },
       }).unwrap();
     } catch (error) {
-      console.error("Failed to update status:", error);
+      // console.error("Failed to update status:", error);
     }
   };
 
