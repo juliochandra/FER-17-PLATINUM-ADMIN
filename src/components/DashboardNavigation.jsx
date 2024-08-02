@@ -20,7 +20,7 @@ const DashboardNavigation = ({ isSidebarToggleVisible }) => {
         className="bg-primary text-white vh-100 p-0"
       >
         <Row className="flex-column px-1">
-          <Col className="d-flex align-items-center justify-content-center p-3">
+          <Col className="d-flex align-items-center justify-content-center p-4">
             <Image src={retangle63} alt="" />
           </Col>
           <Col>
@@ -45,7 +45,7 @@ const DashboardNavigation = ({ isSidebarToggleVisible }) => {
       {isSidebarToggleVisible && (
         <Col id="sidebarToggle" xs={"auto"} className="bg-white vh-100">
           <Row className="flex-column p-0">
-            <Col className="bottom-shadow d-flex align-items-center justify-content-center p-3">
+            <Col className="bottom-shadow d-flex align-items-center justify-content-center p-4">
               <Image src={retangle62} alt="" />
             </Col>
             <Col className="text-uppercase">{currentPath}</Col>

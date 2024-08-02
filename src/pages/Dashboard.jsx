@@ -39,7 +39,9 @@ const Dashboard = () => {
               </Row>
               <Row className="mt-4">
                 <Col>
-                  <h4>Rented Car Data Visualization</h4>
+                  <h4 className="border-start border-5 border-primary ps-2">
+                    Rented Car Data Visualization
+                  </h4>
                 </Col>
               </Row>
               <Row>

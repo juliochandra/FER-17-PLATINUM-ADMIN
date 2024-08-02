@@ -30,7 +30,7 @@ const DashboardNavigationContent = ({ handleSidebarToggle, setCarsParams }) => {
       className="bg-white p-3 bottom-shadow align-items-center"
     >
       <Col xs="auto">
-        <Button className="p-0" variant="link" onClick={handleSidebarToggle}>
+        <Button className="p-2" variant="link" onClick={handleSidebarToggle}>
           <Image src={fi_menu} alt="" />
         </Button>
       </Col>

@@ -5,7 +5,7 @@ const reportApi = apiSlice.injectEndpoints({
     getReport: builder.query({
       query: ({ startDate, endDate }) =>
         `/order/reports?from=${startDate}&until=${endDate}`,
-      providesTags: ["Report"],
+      providesTags: ["Order"],
       keepUnusedDataFor: 5,
     }),
     getOrder: builder.query({
