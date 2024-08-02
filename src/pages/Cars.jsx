@@ -138,7 +138,7 @@ const Cars = () => {
               setCarsParams={setCarsParams}
             />
 
-            <Row id="content">
+            <Row id="content " className="mt-4 p-5">
               <Col className="vh-100">
                 <Row>
                   <Col>
@@ -163,7 +163,9 @@ const Cars = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col>List Car</Col>
+                  <Col className="h3 border-start border-5 border-primary ms-2">
+                    List Car
+                  </Col>
                   <Col className="d-flex justify-content-end">
                     <Link to="/cars/add" className="rounded-1 btn btn-primary">
                       + Add New Car
@@ -171,12 +173,12 @@ const Cars = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col xs={"auto"} className="p-1">
+                  <Col xs={"auto"} className="p-2">
                     <Button variant="outline-primary" onClick={handleButtonAll}>
                       All
                     </Button>
                   </Col>
-                  <Col xs={"auto"} className="p-1">
+                  <Col xs={"auto"} className="p-2">
                     <Button
                       variant="outline-primary"
                       onClick={handleButtonSmall}
@@ -184,7 +186,7 @@ const Cars = () => {
                       2 - 4 people
                     </Button>
                   </Col>
-                  <Col xs={"auto"} className="p-1">
+                  <Col xs={"auto"} className="p-2">
                     <Button
                       variant="outline-primary"
                       onClick={handleButtonMedium}
@@ -192,7 +194,7 @@ const Cars = () => {
                       4 -6 people
                     </Button>
                   </Col>
-                  <Col xs={"auto"} className="p-1">
+                  <Col xs={"auto"} className="p-2">
                     <Button
                       variant="outline-primary"
                       onClick={handleButtonLarge}

@@ -19,7 +19,7 @@ const DashboardNavigation = ({ isSidebarToggleVisible }) => {
         xs={"auto"}
         className="bg-primary text-white vh-100 p-0"
       >
-        <Row className="flex-column px-1">
+        <Row className="flex-column px-2">
           <Col className="d-flex align-items-center justify-content-center p-4">
             <Image src={retangle63} alt="" />
           </Col>

@@ -58,7 +58,7 @@ const AddCar = () => {
               handleSidebarToggle={handleSidebarToggle}
             />
 
-            <Row id="content">
+            <Row id="content" className="mt-4 p-5">
               <Col className="vh-100">
                 <Row>
                   <Col>
@@ -73,16 +73,16 @@ const AddCar = () => {
                     </Breadcrumb>
                   </Col>
                 </Row>
-                <Row>
-                  <Col>
-                    <h3>Add New Car</h3>
+                <Row className="px-1">
+                  <Col className="h3 border-start border-5 border-primary ms-2">
+                    Add New Car
                   </Col>
                 </Row>
                 <Row className="mt-3">
                   <Form onSubmit={handleSubmit(addCarSubmit)}>
                     <Col className="vh-100">
-                      <div className="bg-white p-3">
-                        <Form.Group as={Row} controlId="name">
+                      <div className="bg-white p-3 rounded border">
+                        <Form.Group as={Row} controlId="name" className="mb-3">
                           <Form.Label column sm={2}>
                             Name/Tipe Mobil
                           </Form.Label>
@@ -95,7 +95,7 @@ const AddCar = () => {
                           </Col>
                         </Form.Group>
 
-                        <Form.Group as={Row} controlId="price">
+                        <Form.Group as={Row} controlId="price" className="mb-3">
                           <Form.Label column sm={2}>
                             Harga
                           </Form.Label>
@@ -108,7 +108,11 @@ const AddCar = () => {
                           </Col>
                         </Form.Group>
 
-                        <Form.Group as={Row} controlId="category">
+                        <Form.Group
+                          as={Row}
+                          controlId="category"
+                          className="mb-3"
+                        >
                           <Form.Label column sm={2}>
                             Category
                           </Form.Label>
